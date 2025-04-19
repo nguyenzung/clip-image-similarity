@@ -3,7 +3,6 @@ import time
 import requests
 import heapq
 
-from PIL import Image
 from pathlib import Path
 
 def is_image(filename):
