@@ -1,4 +1,3 @@
-# app.py
 from fastapi import FastAPI, UploadFile
 from predictor import SimilarityCalculator
 import os
@@ -26,17 +25,14 @@ async def predict(files: list[UploadFile]):
                     "error": "Both uploaded files must be in JPG, JPEG, or PNG format."
                 }
 
-        # Save the uploaded files temporarily with UUID4-based names
         image_paths = []
 
         for i, file in enumerate(files):
-            filename = str(uuid.uuid4()) + file_exts[i]
-            destination_path = os.path.join(TEMP_FOLDER, filename)
-            image_paths.append(destination_path)
+            print("Filename:", file.filename)
+            destination_path = os.path.join(TEMP_FOLDER, file.filename)
+            image_paths.append(file.file.read())
 
-            with open(destination_path, "wb") as image_data:
-                image_data.write(file.file.read())
-
+        print("Calcualte image similarity")
         result = similarity_calculator.calculate_similarity(*image_paths)
 
         return result
