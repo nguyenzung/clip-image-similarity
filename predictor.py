@@ -1,17 +1,17 @@
 import torch
 import clip
-import sys
 from io import BytesIO
 from PIL import Image
 
-def get_dict_size(dictionary):
-    total_size = sys.getsizeof(dictionary)  # Get the size of the dictionary object itself
-    for key, value in dictionary.items():
-        total_size += sys.getsizeof(key)  # Add the size of the key
-        total_size += sys.getsizeof(value)  # Add the size of the value
-        print("key size:", sys.getsizeof(key))
-        print("value size:", sys.getsizeof(value))
-    return total_size
+# def get_dict_size(dictionary):
+#     import sys
+#     total_size = sys.getsizeof(dictionary)  # Get the size of the dictionary object itself
+#     for key, value in dictionary.items():
+#         total_size += sys.getsizeof(key)  # Add the size of the key
+#         total_size += sys.getsizeof(value)  # Add the size of the value
+#         print("key size:", sys.getsizeof(key))
+#         print("value size:", sys.getsizeof(value))
+#     return total_size
 
 class SimilarityCalculator:
     def __init__(self):
